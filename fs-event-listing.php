@@ -4,7 +4,7 @@
  * Description: Coding challenge 
  * Author: tmanoilov
  * Version: 0.1
- * Text Domain: fs-event-listing
+ * Text Domain: fs_event
  * License: GPL2
 */
 
@@ -13,10 +13,10 @@ define( 'PATH_INCLUDES', dirname( __FILE__ ) . '/inc' );
 class FS_Event_Listing {
 
 	public function __construct() {
-		add_action('wp_enqueue_scripts', array($this, 'add_css'));
+		add_action( 'wp_enqueue_scripts', array( $this, 'add_css' ) );
 
 		add_action( 'init', array( $this, 'register_event_post_type' ) );
-		
+
 		add_action( 'add_meta_boxes', array( $this, 'add_cf_metaboxes' ) );
 
 		add_action( 'save_post', array( $this, 'save_cfs' ) );
@@ -27,18 +27,18 @@ class FS_Event_Listing {
 	public function register_event_post_type() {
 		register_post_type( 'fs_event', array(
 			'labels' => array(
-				'name' => __("Events", 'fs_event'),
-				'singular_name' => __("Event", 'fs_event'),
-				'add_new' => __("Add New", 'fs_event' ),
-				'add_new_item' => __("Add New Event", 'fs_event' ),
-				'edit_item' => __("Edit Event", 'fs_event' ),
-				'new_item' => __("New Event", 'fs_event' ),
-				'view_item' => __("View Event", 'fs_event' ),
-				'search_items' => __("Search Events", 'fs_event' ),
-				'not_found' =>  __("No events found", 'fs_event' ),
-				'not_found_in_trash' => __("No events found in Trash", 'fs_event' ),
+				'name' => __( "Events", 'fs_event' ),
+				'singular_name' => __( "Event", 'fs_event' ),
+				'add_new' => __( "Add New", 'fs_event' ),
+				'add_new_item' => __( "Add New Event", 'fs_event' ),
+				'edit_item' => __( "Edit Event", 'fs_event' ),
+				'new_item' => __( "New Event", 'fs_event' ),
+				'view_item' => __( "View Event", 'fs_event' ),
+				'search_items' => __( "Search Events", 'fs_event' ),
+				'not_found' =>  __( "No events found", 'fs_event' ),
+				'not_found_in_trash' => __( "No events found in Trash", 'fs_event' ),
 			),
-			'description' => __("Events", 'fs_event'),
+			'description' => __( "Events", 'fs_event' ),
 			'public' => true,
 			'publicly_queryable' => true,
 			'rewrite' => true,
@@ -52,23 +52,21 @@ class FS_Event_Listing {
 				'custom-fields',
 				'page-attributes'
 			)
-			)
-		);
+		));
 	}
 
 	public function add_cf_metaboxes() {
 		add_meta_box(
 			'fs_event_details',
 			'Event Details',
-			array( $this, 'fs_event_details'),
+			array( $this, 'fs_event_details' ),
 			'fs_event',
 			'side',
 			'default'
 		);
 	}
 
-	public function fs_event_details( $post, $metabox )
-	{
+	public function fs_event_details( $post, $metabox ) {
 		$fs_event_date = "";
 		$fs_event_location = "";
 		$fs_event_url = "";
@@ -97,7 +95,7 @@ class FS_Event_Listing {
 			return;
 		}
 
-		if ( ! isset( $_POST['post_type'] ) || $_POST['post_type'] != 'fs_event' ) {
+		if ( ! isset( $_POST['post_type'] ) || ( $_POST['post_type'] != 'fs_event' ) ) {
 			return;
 		}
 		
@@ -128,4 +126,3 @@ class FS_Event_Listing {
 }
 
 $fs_event_listing = new FS_Event_Listing();
-
