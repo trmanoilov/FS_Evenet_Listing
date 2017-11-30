@@ -8,7 +8,7 @@
  * License: GPL2
 */
 
-define( 'PATH_INCLUDES', dirname( __FILE__ ) . '/inc' );
+define( 'FS_PATH_INCLUDES', dirname( __FILE__ ) . '/inc' );
 
 class FS_Event_Listing {
 
@@ -78,13 +78,13 @@ class FS_Event_Listing {
 		}
 		?>
 		<label for="fs_event_date">Event Date</label><br/>
-		<input type="date" id="fs_event_date" name="fs_event_date" value="<?=$fs_event_date?>"><br/><br/>
+		<input type="date" id="fs_event_date" name="fs_event_date" value="<?php echo $fs_event_date; ?>"><br/><br/>
 
 		<label for="fs_event_location">Event Location</label><br/>
-		<input type="text" id="fs_event_location" name="fs_event_location" value="<?=$fs_event_location?>"><br/><br/>
+		<input type="text" id="fs_event_location" name="fs_event_location" value="<?php $fs_event_location; ?>"><br/><br/>
 
 		<label for="fs_event_url">Event URL</label><br/>
-		<input type="text" id="fs_event_url" name="fs_event_url" value="<?=$fs_event_url?>"><br/>
+		<input type="text" id="fs_event_url" name="fs_event_url" value="<?php $fs_event_url; ?>"><br/>
 
 		<?php
 
@@ -115,11 +115,11 @@ class FS_Event_Listing {
 	}
 
 	public function show_events_list( $attr, $content = null ) {
-		include_once( PATH_INCLUDES . '/events-list-template.php' );
+		include_once( FS_PATH_INCLUDES . '/events-list-template.php' );
 	}
 	
 	public function add_css() {
-		wp_register_style( 'fs_styles', plugins_url( '/css/style.css', __FILE__ ), array(), '1.0', 'screen' );
+		wp_register_style( 'fs_styles', plugins_url( '/css/style.css', __FILE__ ), array(), '1.0' );
 		wp_enqueue_style( 'fs_styles' );
 	}
 	
