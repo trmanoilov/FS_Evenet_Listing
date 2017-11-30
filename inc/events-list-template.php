@@ -23,7 +23,6 @@ if( $events->have_posts() ):
 				</div>
 				<?php
 			}
-			$event_date = date("Y-m-d");
 			if( !empty( $event_date = get_post_meta( get_the_ID(), 'fs_event_date', true ) ) ) {
 				//$event_date = get_post_meta( get_the_ID(), 'fs_event_date', true );
 				?>
@@ -31,6 +30,8 @@ if( $events->have_posts() ):
 					<span><?php echo date( "d-m-Y", strtotime( $event_date ) ); ?></span>
 				</div>
 				<?php
+			} else {
+				$event_date = date("Y-m-d");
 			}
 			if( !empty( $event_location = get_post_meta( get_the_ID(), 'fs_event_location', true ) ) ) {
 				?>

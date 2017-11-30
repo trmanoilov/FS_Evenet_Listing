@@ -81,10 +81,10 @@ class FS_Event_Listing {
 		<input type="date" id="fs_event_date" name="fs_event_date" value="<?php echo $fs_event_date; ?>"><br/><br/>
 
 		<label for="fs_event_location">Event Location</label><br/>
-		<input type="text" id="fs_event_location" name="fs_event_location" value="<?php $fs_event_location; ?>"><br/><br/>
+		<input type="text" id="fs_event_location" name="fs_event_location" value="<?php echo $fs_event_location; ?>"><br/><br/>
 
 		<label for="fs_event_url">Event URL</label><br/>
-		<input type="text" id="fs_event_url" name="fs_event_url" value="<?php $fs_event_url; ?>"><br/>
+		<input type="text" id="fs_event_url" name="fs_event_url" value="<?php echo $fs_event_url; ?>"><br/>
 
 		<?php
 
